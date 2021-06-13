@@ -6,6 +6,33 @@
         <script type="text/javascript" src="index.js"></script>
     </head>
     <body>
+        <div class="form-container">
+
+            <form id="create-book-form" style="">
+              <h3>Add a Book</h3>
+          
+              <input id='input-title' type="text" name="title" value="" placeholder="Enter book name" class="input-text">
+              <br><br>
+              <input id='input-author' type="text" name="author" value="" placeholder="Enter author" class="input-text">
+              <br><br>
+              <textarea id='input-overview' name="overview" rows="8" cols="80" value="" placeholder="Enter book overview"></textarea>
+              <br><br>
+              <input id='input-url' type="text" name="image" value="" placeholder="Enter book image URL" class="input-text">
+              <br><br>
+              
+              <p>Select Book's Category</p>
+              <select id="categories" name="categories">
+                <option value="1">Self Help</option>
+                <option value="2">Finance</option>
+                <option value="3">Religion</option>
+              </select>
+              <br><br>
+          
+              <input id= 'create-button' type="submit" name="submit" value="Create New Book" class="submit">
+            </form>
+            <br><br>
+            
+          </div>
         <div id="book-container">
         </div>
     </body>
