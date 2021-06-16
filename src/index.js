@@ -15,17 +15,8 @@ document.addEventListener('DOMContentLoaded', () =>{
     .then(response => response.json())
     .then(books => {
       books.data.forEach(book => {
-        const bookMarkup = `
-          <div data-id=${book.id}>
-            <p>${book.attributes.category.name}</p>
-            <img src=${book.attributes.image_url} height="200" width="250">
-            <h3>${book.attributes.title}</h3>
-            <p>${book.attributes.author}</p>
-            <p>${book.attributes.overview}</p>
-            <button data-id=${book.id}>edit</button>
-          </div>
-          <br><br>`;
-          document.querySelector('#book-container').innerHTML += bookMarkup
+        let newBook = new Book(book, book.attributes);
+        document.querySelector('#book-container').innerHTML += newBook.renderBook()
         })
    })
 }
@@ -55,17 +46,9 @@ function createFormHandler(e) {
   })
     .then(response => response.json())
     .then(book => {
-      const bookData = book.data.attributes
-      // render JSON response
-      const bookMarkup = `
-      <div data-id=${book.id}>
-        <img src=${bookData.image_url} height="200" width="250">
-        <h3>${bookData.title}</h3>
-        <p>${bookData.category.name}</p>
-        <button data-id=${bookData.id}>edit</button>
-      </div>
-      <br><br>`;
-
-    document.querySelector('#book-container').innerHTML += bookMarkup;
+      console.log(book);
+      const bookData = book.data
+      let newBook = new Book(bookData, bookData.attributes)
+     document.querySelector('#book-container').innerHTML += newBook.renderBook()
     })
   }
