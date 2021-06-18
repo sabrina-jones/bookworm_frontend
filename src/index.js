@@ -66,4 +66,5 @@ function createFormHandler(e) {
           fetch(url, {
               method: "DELETE"
           })
+        e.target.parentElement.remove()
     }
