@@ -17,7 +17,7 @@ class Book {
             <p>${this.author}</p>
             <img src=${this.image_url} height="200" width="250">
             <p>${this.overview}</p>
-            <button data-id=${this.id}>edit</button>
+            <button data-action='delete'>delete</button>
         </div>
         <br><br> `
      }

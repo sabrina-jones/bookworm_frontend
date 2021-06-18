@@ -4,10 +4,15 @@ document.addEventListener('DOMContentLoaded', () =>{
     //fetch and load books
     getBooks()
 
-    // event listner and handler for create book form
+    //event listner and handler for create book form
     const createBookForm = document.querySelector("#create-book-form")
 
     createBookForm.addEventListener("submit", (e) => createFormHandler(e))
+
+    //event listner for deleting book
+    const bookContainer = document.getElementById("book-container")
+
+    bookContainer.addEventListener("click", deleteBookHandler)
    });
    
    function getBooks(){
@@ -52,3 +57,13 @@ function createFormHandler(e) {
      document.querySelector('#book-container').innerHTML += newBook.renderBook()
     })
   }
+  
+    function deleteBookHandler(e) {
+      e.preventDefault()
+      const id =  e.target.parentElement.dataset.id
+      const url = endPoint + "/" + id
+          // delete this book from backend
+          fetch(url, {
+              method: "DELETE"
+          })
+    }
