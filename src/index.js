@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', () =>{
     const bookContainer = document.getElementById("book-container")
 
     bookContainer.addEventListener("click", deleteBookHandler)
+    
+    //event listner for dark mode
+    const darkModeButton = document.getElementById("dark-mode")
+
+    darkModeButton.addEventListener("click", toggleScreenColor)
+
    });
    
    function getBooks(){
@@ -62,9 +68,38 @@ function createFormHandler(e) {
       e.preventDefault()
       const id =  e.target.parentElement.dataset.id
       const url = endPoint + "/" + id
-          // delete this book from backend
           fetch(url, {
               method: "DELETE"
           })
         e.target.parentElement.remove()
     }
+
+    function toggleScreenColor (e){
+      if (document.body.style.backgroundColor == "white" || document.body.style.backgroundColor == "" ){
+        document.body.style.backgroundColor = "black"
+        document.body.style.color = "white"
+      }
+      else {
+        document.body.style.backgroundColor = "white"
+        document.body.style.color = "black"
+      }
+      
+    }
+
+    
+    // notes on arrow function variations
+
+    //variation 1
+    // const toggleScreenColor = (e) => 'hi'
+
+    // variation 2
+    // const toggleScreenColor = (e) => {
+    //   if (document.body.style.backgroundColor == "white" || document.body.style.backgroundColor == "" ){
+    //     document.body.style.backgroundColor = "black"
+    //     document.body.style.color = "white"
+    //   }
+    //   else {
+    //     document.body.style.backgroundColor = "white"
+    //     document.body.style.color = "black"
+    //   }
+    // }
